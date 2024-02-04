@@ -1,0 +1,74 @@
+Title,keep
+android malware detection scheme based on level of ssl server certificate,False
+a secure and efficient certificateless authentication scheme with unsupervised anomaly detection in VANETs,False
+semi-ct: certificates transparent to identity owners but opaque to snoopers,False
+certificate-based enterprise privacy analysis and anomaly discovery,False
+blockchain-based collaborative certificate revocation systems using clustering,False
+barrier certificate based safe control for lidar-based systems under sensor faults and attacks,False
+certificateless linkable ring signature-based blockchains for securing cognitive radio networks,False
+sybil attack detection based on authentication process using digital security certificate procedure for data transmission in manet,False
+trust based certificate authority for detection of malicious nodes in manet,False
+certificate revocation schemes for providing secure qos in manets,False
+a study on certificate-based trust in manets,False
+managing certificate revocation in vanets using hash trees and query frequencies,False
+an enhanced secure identity-based certificateless public key authentication scheme for vehicular sensor networks,False
+certificate revocation list distribution based on road map distance protocol (rmdp) in vanet,False
+a strongly unforgeable certiﬁcateless signature scheme and its application in iot environments,False
+identifying vulnerabilities of ssl/tls certificate verification in android apps with static and dynamic analysis,False
+malicious ssl certificate detection: a step towards advanced persistent threat defence,False
+certrust: an sdn-based framework for the trust of certificates against crossfire attacks in iot scenarios,False
+malicious node detection on routing via certificate authority and optimal fuzzy for wireless ad-hoc network,False
+analysis of dns graph of phishing websites using digital certificates,True
+discovering httpsified phishing websites using the tls certificates footprints,True
+beyond the lock icon: real-time detection of phishing websites using public key certificates,True
+detecting ambiguous phishing certificates using machine learning,True
+certificate-aware encrypted traffic classification using second-order markov chain,False
+identifying the phishing websites using the patterns of tls certificates,True
+machine learning-based malicious x.509 certificates’ detection,True
+phish-hook: detecting phishing certificates using certificate transparency logs,True
+hunting malicious tls certificates with deep neural networks,True
+can a tls certificate be phishy?,True
+risk rating system of x.509 certificates,True
+risk evaluation of x.509 certificates–a machine learning application,True
+content-agnostic detection of phishing domains using certificate transparency and passive dns,True
+malcertificate: research and implementation of a malicious certificate detection algorithm based on gcn,True
+polict: flexible policy in certificate transparency enabling lightweight self-monitor,False
+certificate transparency in the wild: exploring the reliability of monitors,False
+the invisible side of certificate transparency: exploring the reliability of monitors in the wild,False
+a provably secure certificate-based encryption scheme against malicious ca attacks in the standard model,False
+finding phish in a haystack: a pipeline for phishing classification on certificate transparency logs,True
+security analysis of an enhanced certificateless signcryption in the standard model,False
+integrating a trust framework with a distributed certificate validation scheme for manets,False
+patchcensor: patch robustness certification for transformers via exhaustive testing,False
+massive open online proctor: protecting the credibility of moocs certificates,False
+certificate‐based signature scheme in the standard model,False
+on the relation among various security models for certificateless cryptography,False
+a certificateless signature and group signature schemes against malicious pkg,False
+cryptanalysis and improvement of a certificateless partially blind signature,False
+a comparative analysis of certificate pinning in android & ios,False
+cryptanalysis and improvement of a certificateless encryption scheme in the standard model,False
+improved certificate‐based signature scheme without random oracles,False
+further attacks and improvement of a certificateless signature scheme,False
+malicious kgc attacks in certificateless cryptography,False
+personal marks and community certificates: detecting clones in wireless mobile social networks,False
+certchain: public and efficient certificate audit based on blockchain for tls connections,False
+on the security of a provably secure certificateless strong designated verifier signature scheme based on bilinear pairings,False
+a certificateless anonymous authenticated announcement scheme in vehicular ad hoc networks,False
+"authentication and certificate managements of unauthorized intrusion in ad-hoc networks, problems and solutions",False
+provably secure certificate-based signature scheme without pairings,False
+collaborative validation of public-key certificates for iot by distributed caching,False
+design of provably secure and efficient certificateless blind signature scheme using bilinear pairing,False
+certificateless broadcast signcryption with forward secrecy,False
+weaknesses and improvements of an efficient certificateless signature scheme without using bilinear pairings,False
+certificateless threshold signature secure in the standard model,False
+simulatability and security of certificateless threshold signatures without random oracles,False
+how is the forged certificates in the wild: practice on large-scale ssl usage measurement and analysis,False
+certificateless signcryption in the standard model,False
+public key cryptography sans certificates in ad hoc networks,False
+certificateless remote anonymous authentication schemes for wirelessbody area networks,False
+clasrm: a lightweight and secure certificateless aggregate signature scheme with revocation mechanism for 5g-enabled vehicular networks,False
+dcdroid: automated detection of ssl/tls certificate verification vulnerabilities in android apps,False
+design of vehicle certification schemes in iov based on blockchain,False
+adding security concerns to safety critical certification,False
+group-based adaptive result certification mechanism in desktop grids,False
+a collaborative reputation-based vetting model for online certification of businesses,False

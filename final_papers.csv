@@ -1,0 +1,13 @@
+id,paper
+1,can a tls certificate be phishy?
+2,risk evaluation of x.509 certificates–a machine learning application
+3,discovering httpsified phishing websites using the tls certificates footprints
+4,machine learning-based malicious x.509 certificates’ detection
+5,beyond the lock icon: real-time detection of phishing websites using public key certificates
+6,hunting malicious tls certificates with deep neural networks
+7,risk rating system of x.509 certificates
+8,content-agnostic detection of phishing domains using certificate transparency and passive dns
+9,malcertificate: research and implementation of a malicious certificate detection algorithm based on gcn
+10,finding phish in a haystack: a pipeline for phishing classification on certificate transparency logs
+11,phish-hook: detecting phishing certificates using certificate transparency logs
+12,detecting ambiguous phishing certificates using machine learning
