@@ -27,17 +27,12 @@ from multiprocessing import Pool
 if typing.TYPE_CHECKING:
     from google.cloud import bigquery
 
-# with open('../.keys') as fp:
-#     API_KEY = fp.read().strip()
 
 import os
-from google.oauth2 import service_account
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 
 import googleapiclient.discovery  # type: ignore
 
@@ -109,13 +104,7 @@ def clean_block_list():
     phish[['fullDomain', 'path']] = phish['urlNoProto'].str.split('/', expand=True, n=1)
     phish = phish.drop(phish[phish['fullDomain'].str.endswith('google.com')].index)
     phish = phish.drop(phish[phish['fullDomain'].str.endswith('amazonaws.com')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('godaddysites.com')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('weeblysite.com')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('mybluehost.me')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('inmotionhosting.com')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('firebaseapp.com')].index)
     phish = phish.drop(phish[phish['fullDomain'].str.endswith('googleapis.com')].index)
-    # phish = phish.drop(phish[phish['fullDomain'].str.endswith('azurefd.net')].index)
     phish.reset_index(inplace=True)
     phish['fullDomain'] = phish['fullDomain'].str.replace('www.', '')
     return phish
@@ -160,7 +149,6 @@ def bytes_cast(s):
 
 
 def timestamp_cast(s):
-    # return datetime.datetime.fromtimestamp(float(s))
     return float(s)
 
 
@@ -231,14 +219,10 @@ def is_in_keep_domains(domain: str, keep_domains: dict):
 class Filter:
     def __init__(self, keep_names=None):
         self.keep_names = create_match_set() if keep_names is None else keep_names
-        # add_keep_domain("OpenWrt", self.keep_names)
-        # add_keep_domain("foo.ifjllc.com", self.keep_names)
         self.prob = 0.00001
 
     def __call__(self, row):
         for name in row["f"][0]["v"]:
-            # for name in row["f"][1]["v"]:
-            # if name['v'] in self.keep_names:
             if is_in_keep_domains(name['v'], self.keep_names):
                 return True
         if random.random() < self.prob:
@@ -280,19 +264,6 @@ def call_bq_api(client: "bigquery.Client", page_token, block_i, block_sz, remain
     )
 
 
-# class SlaveHandler(multiprocessing_logging.MultiProcessingHandler):
-#     def __init__(self, name, sub_handler, queue):
-#         super(multiprocessing_logging.MultiProcessingHandler, self).__init__()
-#         self.name = name
-#         self.queue = queue
-#         self.setLevel(self.sub_handler.level)
-#         self.setFormatter(self.sub_handler.formatter)
-#         self.filters = self.sub_handler.filters
-#
-#
-#     def setFormatter(self, fmt):
-#         super(multiprocessing_logging.MultiProcessingHandler, self).setFormatter(fmt)
-
 
 class MultiProcessingHandler(multiprocessing_logging.MultiProcessingHandler):
     def __get_state__(self):
@@ -323,25 +294,6 @@ def install_mp_handler(logger=None):
         logger.removeHandler(orig_handler)
         logger.addHandler(handler)
 
-
-#
-#
-# def install_slave_handler(queue, logger=None):
-#     """Wraps the handlers in the given Logger with an MultiProcessingHandler.
-#
-#     :param logger: whose handlers to wrap. By default, the root logger.
-#     """
-#     if logger is None:
-#         logger = logging.getLogger()
-#
-#     for i, orig_handler in enumerate(list(logger.handlers)):
-#         handler = SlaveHandler("slave-mp-handler-{0}".format(i), sub_handler=orig_handler, queue=queue)
-#
-#         logger.removeHandler(orig_handler)
-#         logger.addHandler(handler)
-#
-#
-# LOG_FORMAT = '[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s'
 
 LOG_Q = multiprocessing.Manager().Queue()
 

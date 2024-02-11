@@ -54,8 +54,6 @@ column_names = [
 
 def concat():
     res = list()
-    # packer = msgpack.Packer()
-    # packer.pack_array_header(10 ** 6)
 
     for p in os.scandir("bigQueryOutputs"):
         if p.name.endswith(".mp"):
@@ -307,7 +305,6 @@ def main():
     # start_time = time.time()
     counter = 0
     for chunk in dict_rows:
-        # ATHATH PHISH OG TRANCO ER SWAPPAÐ !!!!!!!!!!!!!!!!!
         convert_to_df(create_phish_set(), create_tranco_set(), len(chunk[1]), chunk)
         print(f"Done with chunk {counter}")
         counter += 1

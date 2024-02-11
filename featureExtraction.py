@@ -139,13 +139,9 @@ def is_in_keep_domains(domain: str, keep_domains: dict):
 class Filter:
     def __init__(self, keep_names):
         self.keep_names = keep_names
-        # add_keep_domain("OpenWrt", self.keep_names)
-        # add_keep_domain("foo.ifjllc.com", self.keep_names)
 
     def __call__(self, names):
         for name in names:
-            # for name in row["f"][1]["v"]:
-            # if name['v'] in self.keep_names:
             return is_in_keep_domains(name, self.keep_names)
 
 
@@ -270,6 +266,7 @@ def check_crl(row):
         return True
     except KeyError:
         return False
+
 
 def build_features(data):
     # 5
@@ -880,12 +877,6 @@ def build_san_domain_features(data):
 
 
 
-def swap_phish_tranco(df):
-    df["tranco"] = df["in_phish"]
-    df["phish"] = df["in_tranco"]
-    # muna að dropa gömlu columns
-    # bara nauðsynlegt af því ég keyrði parseCertsToDf með swapuðum filterum
-
 
 def save_phish_tranco_sample(df):
     phish = df[df["phish"] == True]
@@ -968,21 +959,6 @@ blocklist = clean_block_list()["fullDomain"]
 whitelist = top_tranco()["domain"]
 
 
-# Function to check wildcard and exact matches using regular expressions
-# def check_domains(domain_list, blocklist, whitelist):
-#     blocklist_matches = {'Wildcard': [], 'Exact': []}
-#     whitelist_matches = {'Wildcard': [], 'Exact': []}
-#     for domain in domain_list:
-#         for pattern in blocklist:
-#             if re.match(rf'^{re.escape(pattern)}$', domain):
-#                 blocklist_matches['Exact'].append(pattern)
-#         for pattern in whitelist:
-#             if re.match(rf'^{re.escape(pattern)}$', domain):
-#                 whitelist_matches['Exact'].append(pattern)
-#             elif re.match(rf'^{re.escape(pattern).replace("*", ".*")}$', domain):
-#                 whitelist_matches['Wildcard'].append(pattern)
-#     return blocklist_matches, whitelist_matches
-
 
 def check_domains(domain_list, blocklist, whitelist, filt_phish, filt_tranco):
     blocklist_matches = []#{'Matches': []}
@@ -1025,10 +1001,6 @@ def create_features_from_df():
     df.reset_index(drop=True, inplace=True)
     df.drop_duplicates(subset=["serial_number"], inplace=True)
 
-    # df_filt = df
-    # print(df.shape)
-    # AFHVERJU ER ÞETTA HÉR
-    # df_filt = balance_dataset(df) # ekki viss um að þetta ætti að vera hér
     df_filt=df
     print("Phish shape: " + str(df_filt.shape))
     phish_final = df_filt[df_filt["phish"] == True]
@@ -1095,76 +1067,7 @@ def add_domain_matches_and_filter():
 
 
 
-def einhver_filteringin():
-    tranco = pd.read_pickle("trancoFiltered.pkl")
-    phish = pd.read_pickle("phishDf2.pkl")
-    print(len(phish))
-    df = phish.append(tranco.sample(n=len(phish)))
-    build_features(df)
-    df.to_pickle("featuresWithTrancoFiltered.pkl")
-
-
 if __name__ == '__main__':
     df = pd.read_pickle("featuresCertAndDomainNewLabel.pkl")
     build_san_domain_features(df)
 
-    ###########################
-
-    # df_all = pd.read_pickle("certPrufa.pkl")
-    # print(df_all.shape)
-    # df = balance_dataset(df_all)
-    # print(df.shape)
-    # df.to_pickle("balancedCertPrufa.pkl")
-    # add_domain_matches_and_filter()
-    # create_features_from_df()
-    # create_domain_features()
-
-
-    ##################################
-    # df_all = pd.read_pickle("certPrufa.pkl")
-    # df = balance_dataset(df_all)
-    # df.to_pickle("filteredCertPrufa.pkl")
-    # create_features_from_df()
-    # print(df.columns)
-    # print(df.issuer_dn)
-    # print(df.issuer_common_name)
-    # phish = pd.read_pickle("phishDf.pkl")
-    # tranco = pd.read_pickle("trancoSampleDf.pkl")
-    #
-    # print(df["issuer_org"].value_counts())
-    #
-    # print(phish["length_seconds"].describe())
-    #
-    # mean_value = phish['length_seconds'].mean()
-    # median_value = phish['length_seconds'].median()
-    # std_deviation = phish['length_seconds'].std()
-    # min_value = phish['length_seconds'].min()
-    # max_value = phish['length_seconds'].max()
-    #
-    # print(f"Mean: {mean_value}")
-    # print(f"Median: {median_value}")
-    # print(f"Standard Deviation: {std_deviation}")
-    # print(f"Minimum Value: {min_value}")
-    # print(f"Maximum Value: {max_value}")
-    # print(phish["length_seconds"].value_counts())
-    # print(phish["issuer_common_name"].value_counts())
-    #
-    #
-    # print(tranco["length_seconds"].describe())
-    #
-    # mean_value = tranco['length_seconds'].mean()
-    # median_value = tranco['length_seconds'].median()
-    # std_deviation = tranco['length_seconds'].std()
-    # min_value = tranco['length_seconds'].min()
-    # max_value = tranco['length_seconds'].max()
-    #
-    # print(f"Mean: {mean_value}")
-    # print(f"Median: {median_value}")
-    # print(f"Standard Deviation: {std_deviation}")
-    # print(f"Minimum Value: {min_value}")
-    # print(f"Maximum Value: {max_value}")
-    #
-    # print(tranco["length_seconds"].value_counts())
-    # print(tranco["issuer_common_name"].value_counts())
-    #
-    #
